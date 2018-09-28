@@ -1,0 +1,24 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.profile-image{
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.name-title{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+table{
+    margin: 0 auto;
+}
