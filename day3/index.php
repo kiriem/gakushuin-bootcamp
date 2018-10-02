@@ -38,9 +38,9 @@
 					</select>
 
 					<label class="form-title mt-4">本文：</label>
-					<textarea class="form-control" rows="5" required=""></textarea>
+					<textarea name="text" class="form-control" rows="5" required=""></textarea>
 
-					<input type="hidden" name="flag" value="1">
+					<input type="hidden" name="flag" value="true">
 
 					<button type="submit" class="btn btn-primary mt-4">送信する</button>
 

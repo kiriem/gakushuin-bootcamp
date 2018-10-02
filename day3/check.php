@@ -1,3 +1,18 @@
+<?php
+
+	//POST形式で渡されてきたflagという名前のデータを取得する
+	$flag = $_POST["flag"];
+
+	if($flag){
+		$userName = $_POST["userName"];
+		$mail = $_POST["mail"];
+		$category = $_POST["category"];
+		$text = $_POST["text"];
+	}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +40,10 @@
 				<p class="page-title">お問い合わせ内容の確認</p>
 
 				<table class="table">
-					<tr><td>お名前</td><td></td></tr>
-					<tr><td>メールアドレス</td><td></td></tr>
-					<tr><td>お問い合わせ内容</td><td></td></tr>
-					<tr><td>本文</td><td></td></tr>
+					<tr><td>お名前</td><td><?php print($userName); ?></td></tr>
+					<tr><td>メールアドレス</td><td><?php print($mail); ?></td></tr>
+					<tr><td>お問い合わせ内容</td><td><?php print($category); ?></td></tr>
+					<tr><td>本文</td><td><?php print($text); ?></td></tr>
 				</table>
 
 			</div>
