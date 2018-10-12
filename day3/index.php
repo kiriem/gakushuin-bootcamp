@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-12 m-3">
+			<div class="col-12 mt-5">
 				<p class="page-title">お問い合わせフォーム</p>
 				<p class="page-text">私たちへのお問い合わせは、以下のフォームよりお願い致します</p>
 
@@ -42,7 +42,7 @@
 
 					<input type="hidden" name="flag" value="true">
 
-					<button type="submit" class="btn btn-primary mt-4">送信する</button>
+					<button type="submit" class="btn btn-success mt-4">送信する</button>
 
 				</form>
 
