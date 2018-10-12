@@ -1,10 +1,5 @@
 <?php
 
-session_start();
-$correct = $_SESSION["correct"];
-
-require_once "./questionData.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +27,9 @@ require_once "./questionData.php";
 			</div>
 			<div class="col-12 mt-2 bg-light p-2">
 				<h3>結果！</h3>
-				<p><?php print(count($quizList)); ?>問中、<?php print($correct); ?>問正解です！</p>
-
-                <a href="./index.php?qid=0">もう一度解いてみる</a>
-
+				<p>n問中、m問正解です！</p>
 			</div>
-            
-        
+
 		</div>
 		
 	</div>

@@ -1,0 +1,21 @@
+.page-title{
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: .5em;
+}
+
+.page-text{
+	padding: .5em .75em;
+  	background-color: #f6f6f6;
+}
+
+.form-title{
+	padding: .25em 0 .25em .75em;
+  	border-left: 6px solid #ccc;
+  	font-weight: bold;
+}
+
+.submitButton{
+	display: block;
+	margin: 0 auto;
+}

@@ -1,37 +1,5 @@
 <?php
 
-require_once "./questionData.php";
-
-$qid = $_GET["qid"];
-$quizData = $quizList[$qid];
-
-$resultShowFlag = false;
-
-//回答を取得する
-$flag = $_POST["flag"];
-
-session_start();
-
-if($qid == 0){
-	$_SESSION["correct"] = 0;
-}
-
-if($flag){
-
-	//回答をチェックする
-	$userAnswer = $_POST["userAnswer"];
-	$answer = $quizData["answer"];
-
-	$resultShowFlag = true;
-	
-	if($userAnswer == $answer){
-		$result = true;
-		$_SESSION["correct"] += 1;
-	}else{
-		$result = false;
-	}
-
-}
 
 ?>
 
@@ -60,55 +28,27 @@ if($flag){
 			</div>
 			<div class="col-12 mt-2 bg-light p-2">
 				<h3>問題！</h3>
-				<p><?php print($quizData["quiz"]); ?></p>
+				<p>ここに問題がはいる。</p>
 			</div>
 
 			<div class="col-12 mt-2 p-2">
-				<form class="form-group" action="" method="POST">
+				<form class="form-group">
 					<input type="text" name="userAnswer" class="form-control" placeholder="回答を入力">
-					<input type="hidden" name="flag" value="true">					
-					<button type="submit" class="btn btn-success mt-5 submitButton">回答する</button>
+					<input type="hidden" name="qnum" value="">
+					<button type="button" class="btn btn-success mt-5 submitButton">回答する</button>
 				</form>
 			</div>
 
 		</div>
 		<div class="row">
-		<?php 
-
-		if($resultShowFlag){
-
-			if($result){
-print<<<EOF
-
-<div class="col-12 mt-5 p-2 bg-danger">
-<h3>正解です！</h3>
-</div>
-
-EOF;
-			}else{
-print<<<EOF
-<div class="col-12 mt-5 p-2 bg-info">
-<h3>残念...不正解！</h3>
-<p>正解は、{$answer}でした。</p>
-</div>
-EOF;
-			}
-
-			$nextQId = $qid+1;
-
-			//現在の回答が最終問題かどうかをチェックする
-
-			if($qid+1 == count($quizList)){
-				//最終問題だった場合は結果ページへ飛ぶ
-				print("<a href='result.php' class='btn btn-warning mt-3 submitButton'>結果を見る</a>");
-			}else{
-				print("<a href='index.php?qid={$nextQId}' class='btn btn-warning mt-3 submitButton'>次の問題へ</a>");
-			}
-			
-			
-
-		}
-		?>
+			<div class="col-12 mt-5 p-2 bg-danger">
+				<h3>正解です！</h3>
+			</div>
+			<div class="col-12 mt-5 p-2 bg-info">
+				<h3>残念...不正解！</h3>
+				<p>正解は、◯◯でした。</p>
+			</div>
+			<a href="index.php?qid=" class="btn btn-warning mt-3 submitButton">次の問題へ</a>
 			
 		</div>
 	</div>

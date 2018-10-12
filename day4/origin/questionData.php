@@ -1,6 +1,6 @@
 <?php
 
-$quizList = [
+$quiz = [
 	0 => [
 		"quiz" => "日本で一番高い山は？",
 		"answer" => "富士山"
