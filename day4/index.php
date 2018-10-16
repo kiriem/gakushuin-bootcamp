@@ -23,13 +23,14 @@ if($flag){
 	$answer = $quizData["answer"];
 
 	$resultShowFlag = true;
+
 	
-	if($userAnswer == $answer){
-		$result = true;
-		$_SESSION["correct"] += 1;
-	}else{
-		$result = false;
-	}
+if(in_array($userAnswer, $answer)){
+	$result = true;
+	$_SESSION["correct"] += 1;
+}else{
+	$result = false;
+}
 
 }
 
@@ -61,6 +62,7 @@ if($flag){
 			<div class="col-12 mt-2 bg-light p-2">
 				<h3>問題！</h3>
 				<p><?php print($quizData["quiz"]); ?></p>
+				<p>ヒント：<?php print($quizData["hint"]); ?></p>
 			</div>
 
 			<div class="col-12 mt-2 p-2">
@@ -89,7 +91,7 @@ EOF;
 print<<<EOF
 <div class="col-12 mt-5 p-2 bg-info">
 <h3>残念...不正解！</h3>
-<p>正解は、{$answer}でした。</p>
+<p>正解は、{$answer[0]}でした。</p>
 </div>
 EOF;
 			}
@@ -104,7 +106,6 @@ EOF;
 			}else{
 				print("<a href='index.php?qid={$nextQId}' class='btn btn-warning mt-3 submitButton'>次の問題へ</a>");
 			}
-			
 			
 
 		}
