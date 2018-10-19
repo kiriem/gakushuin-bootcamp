@@ -9,7 +9,7 @@
 	        
 	    }elseif ($debugFlag == 1) {
 		    
-			$dsn = 'mysql:dbname=iboard;host=localhost';
+			$dsn = 'mysql:dbname=sql-example;host=localhost';
 	    	$user = 'root';
 	    	$password = 'root';
 
@@ -22,7 +22,7 @@
 			PDO::ATTR_EMULATE_PREPARES=>false
 		);
 
- 		// DBサーバーへコネクトk
+ 		// DBサーバーへコネクト
     	$dbh = new PDO($dsn, $user, $password, $connOpt);
 		
 		return $dbh;
