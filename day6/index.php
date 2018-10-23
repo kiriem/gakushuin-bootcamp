@@ -1,6 +1,6 @@
 <?php
 
-ini_set("display_errors", "on");
+//ini_set("display_errors", "on");
 
 require_once './common/FavoriteFoods.php';
 
@@ -8,24 +8,16 @@ $foodManager = new FavoriteFoods();
 
 $flag = $_POST["flag"];
 
-$foodList = $foodManager->getFoodList();
-
-var_dump($foodList);
-
 if ($flag) {
 
 	$foodName = $_POST["foodName"];
 	$reason = $_POST["reason"];
 
 	$createNewData = $foodManager->createNewData($foodName, $reason);
-
-	if ($createNewData) {
-		print("成功！");
-	}else{
-		print("保存に失敗");
-	}
 	
 }
+
+$foodList = $foodManager->getFoodList();
 
 ?>
 
@@ -46,15 +38,48 @@ if ($flag) {
 </head>
 <body>
 
-	<h1>SQLの基本</h1>
-	<form action="" method="POST" class="form-group">
+	<div class="container">
+		<div class="row mt-4">
+			<div class="col-md-12">
 
-		<input type="text" name="foodName" required placeholder="食べ物の名前" class="form-control">
-		<input type="hidden" name="flag" value="true">
-		<textarea name="reason" class="form-control" rows="5" placeholder="好きな理由"></textarea>
-		<input type="submit" value="追加する" class="btn btn-primary">
-		
-	</form>
+				<h1>SQLの基本</h1>
+				<form action="" method="POST" class="form-group">
+
+					<input type="text" name="foodName" required placeholder="食べ物の名前" class="form-control">
+					<input type="hidden" name="flag" value="true">
+					<textarea name="reason" class="form-control" rows="5" placeholder="好きな理由"></textarea>
+					<input type="submit" value="追加する" class="btn btn-primary">
+					
+				</form>
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th>好きなたべもの</th>
+							<th>その理由</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<?php
+
+							for($i=0; $i < count($foodList); $i++){
+								
+								print("<tr>");
+								print("<td>{$foodList[$i]["food_name"]}");
+								print("<td>{$foodList[$i]["reason"]}");
+								print("</tr>");
+							}
+
+						?>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
