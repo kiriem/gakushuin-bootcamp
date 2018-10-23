@@ -15,4 +15,15 @@ class FavoriteFoods {
 
 	}
 
+	public function getFoodList(){
+
+		$dbh = dbCon();
+
+		$sql = "SELECT * from my_favorite_foods";
+        $stmt = $dbh -> query($sql);
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		return $data;
+	}
+
 }

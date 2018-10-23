@@ -8,6 +8,10 @@ $foodManager = new FavoriteFoods();
 
 $flag = $_POST["flag"];
 
+$foodList = $foodManager->getFoodList();
+
+var_dump($foodList);
+
 if ($flag) {
 
 	$foodName = $_POST["foodName"];
