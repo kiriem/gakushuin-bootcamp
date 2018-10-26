@@ -5,9 +5,12 @@
 $isLogin = $_COOKIE["isLogin"];
 
 if($isLogin){
+    header("Location: ./timeline/");
     $userId = $_COOKIE["userId"];
     $userName = $_COOKIE["userName"];
     $userMail = $_COOKIE["userMail"];
+}else{
+    
 }
 
 ?>
@@ -18,6 +21,7 @@ if($isLogin){
 	<title>PhotoStream</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -42,31 +46,4 @@ if($isLogin){
             </li>
          </ul>
         
-        <div class="dropdown ml-auto">
-            <!-- 切替ボタンの設定 -->
-  
-            <a class="btn bg-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php
-                    if($isLogin){
-                        print($userMail);
-                        print(" / (@{$userName})");
-                    }else{
-                        print("ログイン / サインイン");
-                    }
-                ?>
-                </a>
-
-            <!-- ドロップメニューの設定 -->
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <?php
-                    if($isLogin){
-                        print("<a class='dropdown-item' href='./logout.php'><i class='fas fa-sign-out-alt'></i> ログアウト</a>");
-                    }else{
-                        print("<a class='dropdown-item' href='./login.php'><i class='fas fa-sign-in-alt'></i> ログイン</a>");
-                        print("<a class='dropdown-item' href='./signup.php'><i class='fas fa-user-plus'></i> サインイン</a>");
-                    }
-                ?>
-                
-            </div>
-        </div>
     </nav>

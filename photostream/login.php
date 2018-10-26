@@ -64,8 +64,10 @@
                 <input type="text" name="mail" class="form-control text-center mt-3" placeholder="メールアドレス">
                 <input type="password" name="userPassword" class="form-control text-center mt-3" placeholder="パスワード">
                 <input type="hidden" name="flag" value="true">
-                <button type="submit" class="btn btn-primary mt-5 btn-center">ログインする</button>
+                <button type="submit" class="btn btn-primary mt-5 btn-center"><i class="fas fa-sign-in-alt"></i> ログインする</button>
             </form>
+
+            <a class="btn btn-success text-white mt-5 btn-center" href="signup.php"><i class="fas fa-user-plus"></i> アカウントを作る</a>
 
         </div>
     </div>

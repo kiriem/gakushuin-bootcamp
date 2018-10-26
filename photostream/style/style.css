@@ -9,5 +9,34 @@
 .btn-center{
     display: block;
     margin: 0 auto;
-    width: 150px;
+    width: 180px;
+}
+
+.image-center{
+    width: 50%;
+}
+
+.profile-image{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.username-text{
+    font-size: 24px;
+}
+
+.link-center{
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.article-profile-image{
+    width: 40px;
+    float: left;
+    display: block;
+}
+
+.article-user-name{
+    float: left;
 }

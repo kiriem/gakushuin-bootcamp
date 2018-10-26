@@ -14,12 +14,34 @@ class UserData {
         return $flag;
     }
 
-    public function getUserDataByMail($mail){
-        # code...
+    public function getUserDataById($userId){
+        $dbh = dbCon();
+        $sql = "SELECT user_name from user_data where id = :userId limit 1";
+        $stmt = $dbh -> prepare($sql);
+        $stmt->execute(array(":userId"=>$userId));
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data[0];
+
     }
 
     public function getUserIdByMail($mail){
         # code...
+    }
+
+    public function getUserProfileImage($userId){
+        $dbh = dbCon();
+        $sql = "SELECT user_profile_image from user_data where id = :userId limit 1";
+        $stmt = $dbh -> prepare($sql);
+        $stmt->execute(array(":userId"=>$userId));
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if($data[0]["user_profile_image"] == "") {
+            return "upload/profile_image/profile.png";
+        }else{
+            return "upload/profile_image/{$data[0]['user_profile_image']}";
+        }
+
     }
 
     public function isUserRegisterd($mail){
@@ -49,6 +71,20 @@ class UserData {
         return $data[0]["user_name"];
 
     }
+
+    /*== profile ==*/
+
+    public function updateProfileImage($userId, $fileName){
+        $dbh = dbCon();
+        $sql = "UPDATE user_data SET user_profile_image = ? where id = ? limit 1";
+        $stmt = $dbh->prepare($sql);
+        $result = $stmt->execute(array($fileName, $userId));
+
+        return $result;
+
+    }
+
+
 
     /*== login ==*/
     public function login($mail, $password){

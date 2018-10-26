@@ -32,7 +32,7 @@
 
             <form action="" method="POST">
                 <input type="hidden" name="flag" value="true">
-                <button type="submit" class="btn btn-primary submitButton mt-5">ログインする</button>
+                <button type="submit" class="btn btn-primary submitButton mt-5 btn-center">ログインする</button>
             </form>
 
         </div>

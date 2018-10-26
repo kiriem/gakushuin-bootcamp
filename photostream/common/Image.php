@@ -28,6 +28,17 @@ class Image {
 
     }
 
+    public function getUserImageList($userId){
+        $dbh = dbCon();
+
+        $sql = "SELECT * from image_data where user_id = ? ORDER BY update_date DESC limit 20";
+        $stmt = $dbh -> prepare($sql);
+        $stmt -> execute(array($userId));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
 
 
 
