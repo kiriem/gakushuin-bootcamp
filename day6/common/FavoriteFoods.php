@@ -16,14 +16,25 @@ class FavoriteFoods {
 	}
 
 	public function getFoodList(){
-
 		$dbh = dbCon();
-
 		$sql = "SELECT * from my_favorite_foods";
         $stmt = $dbh -> query($sql);
 		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		
 		return $data;
 	}
+
+	public function deleteData($id){
+		$dbh = dbCon();
+
+		$sql = "DELETE from my_favorite_foods where id = :dataId";
+        $stmt = $dbh -> prepare($sql);
+        $stmt->execute(array(":dataId"=>$id));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+
+	}
+
+
 
 }

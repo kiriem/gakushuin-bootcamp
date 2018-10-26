@@ -1,0 +1,13 @@
+.upload-bar{
+    margin-top: 56px;
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+.btn-center{
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+}

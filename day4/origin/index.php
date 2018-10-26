@@ -1,5 +1,40 @@
 <?php
 
+//ini_set("display_errors", "true");
+
+session_start();
+
+$qId = $_GET["qid"];
+
+require_once './quizList.php';
+
+$quizData = $quizList[$qId];
+
+$flag = $_POST["flag"];
+
+$alertShowFlag = false;
+
+if ($qId == 0) {
+	unset($_SESSION["correct"]);
+}
+
+if($flag){
+	$answer = $quizData["answer"];
+
+	$alertShowFlag = true;
+
+	$userAnswer = $_POST["userAnswer"];
+	
+
+	//正誤判定		
+	if ($userAnswer == $answer) {
+		$result = true;
+		$_SESSION["correct"] += 1;
+	}else{
+		$result = false;
+	}
+
+}
 
 ?>
 
@@ -28,28 +63,64 @@
 			</div>
 			<div class="col-12 mt-2 bg-light p-2">
 				<h3>問題！</h3>
-				<p>ここに問題がはいる。</p>
+				<p><?php print($quizData["quiz"]); ?></p>
 			</div>
 
 			<div class="col-12 mt-2 p-2">
-				<form class="form-group">
+				<form class="form-group" action="" method="POST">
 					<input type="text" name="userAnswer" class="form-control" placeholder="回答を入力">
-					<input type="hidden" name="qnum" value="">
-					<button type="button" class="btn btn-success mt-5 submitButton">回答する</button>
+					<input type="hidden" name="flag" value="true">
+					<button type="submit" class="btn btn-success mt-5 submitButton">回答する</button>
 				</form>
 			</div>
 
 		</div>
+
 		<div class="row">
-			<div class="col-12 mt-5 p-2 bg-danger">
-				<h3>正解です！</h3>
-			</div>
-			<div class="col-12 mt-5 p-2 bg-info">
-				<h3>残念...不正解！</h3>
-				<p>正解は、◯◯でした。</p>
-			</div>
-			<a href="index.php?qid=" class="btn btn-warning mt-3 submitButton">次の問題へ</a>
-			
+
+<?php
+
+	if($alertShowFlag){
+
+		if ($result) {
+
+print<<<EOF
+<div class="col-12 mt-5 p-2 bg-danger">
+<h3>正解です！</h3>
+</div>
+EOF;
+		}else{
+
+print<<<EOF
+<div class="col-12 mt-5 p-2 bg-info">
+<h3>残念...不正解！</h3>
+<p>正解は、◯◯でした。</p>
+</div>
+EOF;
+
+		}
+
+		$nextQId = $qId+1;
+
+		//if文
+
+		if ($qId+1 == count($quizList)) {
+print<<<EOF
+<a href="result.php" class="btn btn-warning mt-3 submitButton">結果を見る</a>
+EOF;
+
+		}else{
+print<<<EOF
+<a href="index.php?qid={$nextQId}" class="btn btn-warning mt-3 submitButton">次の問題へ</a>
+EOF;
+
+		}
+		
+
+	}
+
+	?>		
+		
 		</div>
 	</div>
 

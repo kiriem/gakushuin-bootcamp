@@ -70,6 +70,7 @@ $foodList = $foodManager->getFoodList();
 								print("<tr>");
 								print("<td>{$foodList[$i]["food_name"]}");
 								print("<td>{$foodList[$i]["reason"]}");
+								print("<td><a href='delete.php?id={$foodList[$i]["id"]}'>削除する</a></td>");
 								print("</tr>");
 							}
 

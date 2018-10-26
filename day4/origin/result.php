@@ -1,5 +1,14 @@
 <?php
 
+//正解数を取得する
+session_start();
+$correct = $_SESSION["correct"];
+
+//出題問題数を取得する
+require_once 'quizList.php';
+$quizListCount = count($quizList);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +36,7 @@
 			</div>
 			<div class="col-12 mt-2 bg-light p-2">
 				<h3>結果！</h3>
-				<p>n問中、m問正解です！</p>
+				<p><?php print($quizListCount); ?>問中、<?php print($correct); ?>問正解です！</p>
 			</div>
 
 		</div>
